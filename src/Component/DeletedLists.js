@@ -1,13 +1,12 @@
 import React from 'react'
 import ToDoList from './ToDoLists/Child'
 
-const DeletedLists = ({deletedLists, recover}) => {
+const DeletedLists = ({deletedLists, recover, DELETE}) => {
     const [isOpen, setIsOpen] = React.useState(false)
     
     const setDelete = () => {
         setIsOpen(prev => !prev)
     }
-    console.log(deletedLists)
     const Display = deletedLists.map((list) => (
                         <ToDoList 
                             toDo={list.toDo}
@@ -16,6 +15,7 @@ const DeletedLists = ({deletedLists, recover}) => {
                             id={list.id}
                             key={list.id}
                             ondblclick ={recover}
+                            DELETE={DELETE}
                         />
                     ))
   return (

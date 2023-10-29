@@ -2,7 +2,7 @@ import React from 'react'
 
 import Wrapper from './child.style'
 
-const ToDoList = ({toDo, date, ondblclick, id, remainder, setReminder, type}) => {
+const ToDoList = ({toDo, date, ondblclick, id, remainder, setReminder, type, DELETE}) => {
   const GetActualTime = ()=>{
     return new Date(date).toDateString()
   }
@@ -19,7 +19,10 @@ const ToDoList = ({toDo, date, ondblclick, id, remainder, setReminder, type}) =>
   }
   function Buttons() {
     return (
+      <div>
         <button style={extraButtonStyle} onClick={()=> ondblclick(id)}>{type ==='list'?"Remove": "Recover"}</button>
+        {type !== 'list' && <button style={extraButtonStyle} onClick={()=>DELETE(id)}>Delete</button>}
+      </div>
      );
   }
   return (

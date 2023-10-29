@@ -44,6 +44,11 @@ function App() {
      setLists(newLists)
     */
 }
+const DELETE = (key) =>{
+  const deletingList = deletedLists.find(list => list.id === key)
+  const newLists = deletedLists.filter(obj => obj !== deletingList)
+    setDeletedLists(newLists)
+}
   const setReminder = (id)=>{
 
     const updatedLists = lists.map(list => list.id === id?{...list, remainder : !list.remainder}: list)
@@ -83,6 +88,7 @@ function App() {
       <DeletedLists
          deletedLists = {deletedLists}
          recover = {recover}
+         DELETE={DELETE}
       />
 
     </>
