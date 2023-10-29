@@ -22,7 +22,7 @@ function App() {
   },[lists])
     React.useEffect(()=>{
     localStorage.setItem("DeletedLists", JSON.stringify(deletedLists))
-  },[deletedLists)
+  },[deletedLists])
 
   const ondblclick = (key) => {
     const deleted = lists.find(list => list.id === key)
