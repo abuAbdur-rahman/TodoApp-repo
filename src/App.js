@@ -12,13 +12,17 @@ import toDos from "./toDos"
 
 function App() {
   const NewLists = localStorage.getItem("Lists")
+  const UnRecLists = localStorage.getItem("DeletedLists")
   const [lists, setLists] = React.useState(JSON.parse(NewLists) || toDos)
   const [isOpen, setIsOpen] = React.useState(false)
-  const [deletedLists, setDeletedLists] = React.useState([])
+  const [deletedLists, setDeletedLists] = React.useState(JSON.parse(UnRecLists) || [])
 
   React.useEffect(()=>{
     localStorage.setItem("Lists", JSON.stringify(lists))
   },[lists])
+    React.useEffect(()=>{
+    localStorage.setItem("DeletedLists", JSON.stringify(deletedLists))
+  },[deletedLists)
 
   const ondblclick = (key) => {
     const deleted = lists.find(list => list.id === key)
