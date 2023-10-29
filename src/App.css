@@ -1,8 +1,12 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 .App {
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +39,41 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.empty{
+  position: relative;
+  margin-top: 100px;
+  left: 50%;
+  transform: translate(-50%,-60%);
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 35vh;
+}
+
+footer{
+  position: relative;
+  bottom: 0;
+  width: 99%;
+  margin-left: .5%;
+  text-align: center;
+  /* border: 1px solid black; */
+  margin-top: 50px;
+  color: blue;
+  font-weight: 900;
+  font-size: 1.2rem;
+  font-style: italic;
+  text-shadow: 2px 2.5px 2px black;
+  cursor: pointer;
+  max-height: 60%;
+}
+
+footer:hover{
+  background-color: black;
+  color: white;
+  transition: all .3s ease-in-out;
+  text-shadow: 2px 2.5px 2px coral;
 }

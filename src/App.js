@@ -1,24 +1,80 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+
+// Components
+import Header from './Component/Header';
+import InputForm from './Component/InputForm';
+import ToDoLists from './Component/ToDoLists';
+import DeletedLists from './Component/DeletedLists';
+
+//api
+import toDos from "./toDos"
 
 function App() {
+  const [lists, setLists] = React.useState(toDos)
+  const [isOpen, setIsOpen] = React.useState(false)
+  const [deletedLists, setDeletedLists] = React.useState([])
+
+  const ondblclick = (key) => {
+    const deleted = lists.find(list => list.id === key)
+      setDeletedLists(prev => [...prev, deleted])
+      const newLists = lists.filter(obj => obj !== deleted)
+    setLists(newLists)
+  }
+  const recover = (key) => {
+    const recoveringList = deletedLists.find(list => list.id === key)
+    setLists(previous => [...previous, recoveringList].sort((a,b) => new Date(a.date) - new Date(b.date)))
+    const newLists = deletedLists.filter(obj => obj !== recoveringList)
+    setDeletedLists(newLists)
+    /*
+    const deleted = lists.find(list => list.id === key)
+  s etDeletedLists(prev => [...prev, deleted])
+    const newLists = lists.filter(obj => obj !== deleted)
+     setLists(newLists)
+    */
+}
+  const setReminder = (id)=>{
+
+    const updatedLists = lists.map(list => list.id === id?{...list, remainder : !list.remainder}: list)
+    setLists(updatedLists);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header 
+      setIsOpen={setIsOpen}
+      isOpen={isOpen}
+      />
+
+      {
+        isOpen && 
+        <InputForm 
+          setter={setLists}
+          Setter = {setIsOpen}
+        />
+      }
+
+      {
+        lists.length >= 1 ?
+        <ToDoLists
+        list = {lists} 
+        ondblclick={ondblclick}
+        setReminder={setReminder}
+        setDeletedLists = {setDeletedLists}
+      />
+        : <div className='empty'>
+            <h1> Nothing To Display Yet</h1>
+            <p> You can click the Add new button above to Add New Todo...</p>
+          </div>
+
+      }
+
+      <DeletedLists
+         deletedLists = {deletedLists}
+         recover = {recover}
+      />
+
+    </>
   );
 }
 
