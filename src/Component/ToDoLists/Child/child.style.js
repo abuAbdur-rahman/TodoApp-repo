@@ -27,7 +27,7 @@ const Wrapper = styled.div`
     }
     button{
         width: 100px;
-        margin: 10px 0 0 150px; 
+        margin: 10px 5px 0 150px; 
         padding: 8px;
         box-shadow: 2px 2px 4px black;
         border: none;
