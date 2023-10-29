@@ -11,9 +11,14 @@ import DeletedLists from './Component/DeletedLists';
 import toDos from "./toDos"
 
 function App() {
-  const [lists, setLists] = React.useState(toDos)
+  const NewLists = localStorage.getItem("Lists")
+  const [lists, setLists] = React.useState(JSON.parse(NewLists) || toDos)
   const [isOpen, setIsOpen] = React.useState(false)
   const [deletedLists, setDeletedLists] = React.useState([])
+
+  React.useEffect(()=>{
+    localStorage.setItem("Lists", JSON.stringify(lists))
+  },[lists])
 
   const ondblclick = (key) => {
     const deleted = lists.find(list => list.id === key)
