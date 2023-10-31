@@ -19,8 +19,9 @@ ul{
     width:33.33%;
     align-items:center;
     justify-content:center;
-    h1{
-        text-shadow: 2px 2px 1px black, 3px 3px 2px #ccc
+    span{
+        text-shadow: 2px 2px 1px black, 3px 3px 2px #ccc;
+        cursor: pointer;
     }
     }
 
