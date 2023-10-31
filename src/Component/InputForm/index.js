@@ -5,12 +5,7 @@ import Wrapper from "./InputForm.style"
 import { useState } from "react"
 
 
-const InputForm = ({setter, Setter}) => {
-    const [state, setState] = useState({
-        toDo: "",
-        date: "",
-        remainder: true
-    })
+const InputForm = ({setter, Setter, state, setState}) => {
     const [error, setError] = useState(false)
     const onChange = (event) => {
         let {name, value, type, checked} = event.target
@@ -27,6 +22,12 @@ const InputForm = ({setter, Setter}) => {
                 const newArr = [...prev, {...state, id: prev.length + 1}]
                 const sortLists = [...newArr].sort((a,b) => new Date(a.date) - new Date(b.date))
                 return sortLists;
+            })
+            setState({
+                toDo: "",
+                date: "",
+                remainder: true,
+                time: ""
             })
         }
         else{
@@ -72,6 +73,18 @@ const InputForm = ({setter, Setter}) => {
                 id="date"
                 required
                 style={stylesDate}
+                />
+            </div>
+            <div>
+                <label htmlFor="time" style={{display: "block"}}> Select time </label>
+                <input 
+                type="time" 
+                onChange={(e)=>{onChange(e)}} 
+                value={state.time}
+                name="time"
+                id="time"
+                required
+                /* style={stylestime} */
                 />
             </div>
             <div>

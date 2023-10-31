@@ -4,7 +4,7 @@ import logo from '../../logo.svg';
 //style
 import HeadStyle from "./Header.style";
 
-const Header = ({isOpen, setIsOpen}) => {
+const Header = ({isOpen, setIsOpen, setter, loggedIn, nameData}) => {
     const toggleIsOpen = () =>{
         setIsOpen((prev) => !prev)
     }
@@ -15,19 +15,17 @@ const Header = ({isOpen, setIsOpen}) => {
         <HeadStyle>
             <ul>
                 <li>
-                    <a 
-                    href='/'>
                         <img src={logo} alt="logo png"/>
-                    </a>
                 </li>
                 <li>
-                    <button onClick={toggleIsOpen}>
+                    {loggedIn && <button onClick={toggleIsOpen}>
                         {btnVal}
-                    </button>
-                    </li>
+                    </button>}
+                </li>
                 <li>
-                    <h1>
-                        To Do Website
+                    {loggedIn && <span> Welcome, {nameData.userName.toUpperCase()}</span>}
+                    <h1 onDoubleClick={()=>{setter(false)}}>
+                        {!loggedIn && 'TODO App'} 
                     </h1>
                 </li>
             </ul>

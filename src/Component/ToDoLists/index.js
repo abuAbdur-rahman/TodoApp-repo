@@ -9,7 +9,7 @@ import React from 'react'
 
 
 
-const ToDoLists = ({list, ondblclick, setReminder}) => {
+const ToDoLists = ({list, ondblclick, setReminder, edit}) => {
     
     const Lists = list.map((listItem) => {
       return (
@@ -22,6 +22,8 @@ const ToDoLists = ({list, ondblclick, setReminder}) => {
           remainder={listItem.remainder}
           setReminder = {setReminder}
           type = 'list'
+          time={listItem.time}
+          EDIT={edit}
         />
     )
     })

@@ -16,6 +16,7 @@ const DeletedLists = ({deletedLists, recover, DELETE}) => {
                             key={list.id}
                             ondblclick ={recover}
                             DELETE={DELETE}
+                            time={list.time}
                         />
                     ))
   return (

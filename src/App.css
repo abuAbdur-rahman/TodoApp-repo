@@ -56,7 +56,7 @@
 
 footer{
   position: relative;
-  bottom: 0;
+  bottom: 10px;
   width: 99%;
   margin-left: .5%;
   text-align: center;
@@ -68,7 +68,6 @@ footer{
   font-style: italic;
   text-shadow: 2px 2.5px 2px black;
   cursor: pointer;
-  max-height: 60%;
 }
 
 footer:hover{
@@ -76,4 +75,8 @@ footer:hover{
   color: white;
   transition: all .3s ease-in-out;
   text-shadow: 2px 2.5px 2px coral;
+}
+
+#root > div{
+  min-height: 80vh;
 }

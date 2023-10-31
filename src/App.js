@@ -1,98 +1,48 @@
 //css
 
 import './App.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Components
-import Header from './Component/Header';
-import InputForm from './Component/InputForm';
-import ToDoLists from './Component/ToDoLists';
-import DeletedLists from './Component/DeletedLists';
+import InterFace from './InterFace';
+import Login from './Component/Login';
 
-//api
-import toDos from "./toDos"
 
 function App() {
-  const NewLists = localStorage.getItem("Lists")
-  const UnRecLists = localStorage.getItem("DeletedLists")
-  const [lists, setLists] = React.useState(JSON.parse(NewLists) || toDos)
-  const [isOpen, setIsOpen] = React.useState(false)
-  const [deletedLists, setDeletedLists] = React.useState(JSON.parse(UnRecLists) || [])
+  const LOGINS = localStorage.getItem('login')
 
-  React.useEffect(()=>{
-    localStorage.setItem("Lists", JSON.stringify(lists))
-  },[lists])
-    React.useEffect(()=>{
-    localStorage.setItem("DeletedLists", JSON.stringify(deletedLists))
-  },[deletedLists])
+  const [logins, setLogins] = React.useState(JSON.parse(LOGINS))
+  const [approved, setAproval] = React.useState(false)
 
-  const ondblclick = (key) => {
-    const deleted = lists.find(list => list.id === key)
-      setDeletedLists(prev => [...prev, deleted])
-      const newLists = lists.filter(obj => obj !== deleted)
-    setLists(newLists)
-  }
-  const recover = (key) => {
-    const recoveringList = deletedLists.find(list => list.id === key)
-    setLists(previous => [...previous, recoveringList].sort((a,b) => new Date(a.date) - new Date(b.date)))
-    const newLists = deletedLists.filter(obj => obj !== recoveringList)
-    setDeletedLists(newLists)
-    /*
-    const deleted = lists.find(list => list.id === key)
-  s etDeletedLists(prev => [...prev, deleted])
-    const newLists = lists.filter(obj => obj !== deleted)
-     setLists(newLists)
-    */
-}
-const DELETE = (key) =>{
-  const deletingList = deletedLists.find(list => list.id === key)
-  const newLists = deletedLists.filter(obj => obj !== deletingList)
-    setDeletedLists(newLists)
-}
-  const setReminder = (id)=>{
+  useEffect(()=>{
+      localStorage.setItem('login', JSON.stringify(logins))
+  },[logins])
 
-    const updatedLists = lists.map(list => list.id === id?{...list, remainder : !list.remainder}: list)
-    setLists(updatedLists);
-  }
-
-  return (
+  return(
     <>
-      <Header 
-      setIsOpen={setIsOpen}
-      isOpen={isOpen}
-      />
+      {approved?null:
 
+          <Login 
+            logins = {logins}
+            setLogins = {setLogins}
+            setAproval = {setAproval}
+            />
+}
       {
-        isOpen && 
-        <InputForm 
-          setter={setLists}
-          Setter = {setIsOpen}
-        />
+        approved? 
+          <InterFace 
+          setLogins={setAproval} 
+          loggedIn={approved}
+          nameData = {logins}
+          />
+          : null
       }
-
-      {
-        lists.length >= 1 ?
-        <ToDoLists
-        list = {lists} 
-        ondblclick={ondblclick}
-        setReminder={setReminder}
-        setDeletedLists = {setDeletedLists}
-      />
-        : <div className='empty'>
-            <h1> Nothing To Display Yet</h1>
-            <p> You can click the Add new button above to Add New Todo...</p>
-          </div>
-
-      }
-
-      <DeletedLists
-         deletedLists = {deletedLists}
-         recover = {recover}
-         DELETE={DELETE}
-      />
-
+{/*       <Routes>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/' element={<InterFace />}></Route>
+      </Routes> */}
     </>
-  );
+  )
 }
 
 export default App;
