@@ -9,6 +9,7 @@ function Login({logins, setLogins, setAproval}) {
     const userNameRef = React.useRef(null)
     const passwordRef = React.useRef(null)
     const [error, setError] = React.useState(false)
+    const [show, setShow] = React.useState(false) 
 
     const hasSignedUp = logins?true:false
     const extraStyle = {
@@ -74,12 +75,13 @@ function Login({logins, setLogins, setAproval}) {
         <div>
             <label>Password</label>
             <input 
-                type='password'
+                type={show? 'text' :'password'} 
                 name='password'
                 id='password'
                 ref={passwordRef}
                 onChange={handleChange}
                 style={error?extraStyle:null}
+                onDoubleClick = {() => setShow(prev =>!prev)} 
             />
         </div>
         <button onClick={(e)=> {handleLogin(e)}}>{hasSignedUp?'Log In':'Sign Up'}</button>
