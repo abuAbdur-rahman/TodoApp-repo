@@ -32,18 +32,18 @@ function InterFace({setLogins, loggedIn, nameData}) {
     const ondblclick = (key) => {
       const deleted = lists.find(list => list.id === key)
         setDeletedLists(prev => [...prev, deleted])
-        const newLists = lists.filter(obj => obj !== deleted)
+        const newLists = lists.filter(obj => obj !== deleted).map((list,index) => ({...list, id: index}))
       setLists(newLists)
     }
     const recover = (key) => {
       const recoveringList = deletedLists.find(list => list.id === key)
       setLists(previous => [...previous, recoveringList].sort((a,b) => new Date(a.date) - new Date(b.date)))
-      const newLists = deletedLists.filter(obj => obj !== recoveringList)
+      const newLists = deletedLists.filter(obj => obj !== recoveringList).map((list,index) => ({...list, id: index}))
       setDeletedLists(newLists)
   }
   const DELETE = (key) =>{
     const deletingList = deletedLists.find(list => list.id === key)
-    const newLists = deletedLists.filter(obj => obj !== deletingList)
+    const newLists = deletedLists.filter(obj => obj !== deletingList).map((list,index) => ({...list, id: index}))
       setDeletedLists(newLists)
   }
   const edit = (key) => {
