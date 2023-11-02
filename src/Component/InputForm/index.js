@@ -19,7 +19,7 @@ const InputForm = ({setter, Setter, state, setState}) => {
         e.preventDefault()
         if(state.toDo !== "" && state.date !== ""){
             setter((prev)=>{
-                const newArr = [...prev, {...state, id: prev.length + 1}]
+                const newArr = [...prev, {...state, id: state.id || prev.length + 1}]
                 const sortLists = [...newArr].sort((a,b) => new Date(a.date) - new Date(b.date))
                 return sortLists;
             })
