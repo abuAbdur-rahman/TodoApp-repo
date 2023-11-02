@@ -49,7 +49,7 @@ function InterFace({setLogins, loggedIn, nameData}) {
   const edit = (key) => {
     const editingList = lists.find(list => list.id === key)
     setIsOpen(true)
-    setState(editingList)
+    setState([...editingList, id: key])
     const newLists = lists.filter(obj => obj !== editingList)
     setLists(newLists)
   }
