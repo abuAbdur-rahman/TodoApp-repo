@@ -32,25 +32,25 @@ function InterFace({setLogins, loggedIn, nameData}) {
     const ondblclick = (key) => {
       const deleted = lists.find(list => list.id === key)
         setDeletedLists(prev => [...prev, deleted])
-        const newLists = lists.filter(obj => obj !== deleted).map((list,index) => ({...list, id: index}))
+        const newLists = lists.filter(obj => obj !== deleted)
       setLists(newLists)
     }
     const recover = (key) => {
       const recoveringList = deletedLists.find(list => list.id === key)
       setLists(previous => [...previous, recoveringList].sort((a,b) => new Date(a.date) - new Date(b.date)))
-      const newLists = deletedLists.filter(obj => obj !== recoveringList).map((list,index) => ({...list, id: index}))
+      const newLists = deletedLists.filter(obj => obj !== recoveringList)
       setDeletedLists(newLists)
   }
   const DELETE = (key) =>{
     const deletingList = deletedLists.find(list => list.id === key)
-    const newLists = deletedLists.filter(obj => obj !== deletingList).map((list,index) => ({...list, id: index}))
+    const newLists = deletedLists.filter(obj => obj !== deletingList)
       setDeletedLists(newLists)
   }
   const edit = (key) => {
     const editingList = lists.find(list => list.id === key)
     setIsOpen(true)
     setState(editingList)
-    const newLists = lists.filter(obj => obj !== editingList).map((list,index) => ({...list, id: index}))
+    const newLists = lists.filter(obj => obj !== editingList)
     setLists(newLists)
   }
     const setReminder = (id)=>{
