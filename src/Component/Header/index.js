@@ -23,8 +23,8 @@ const Header = ({isOpen, setIsOpen, setter, loggedIn, nameData}) => {
                     </button>}
                 </li>
                 <li>
-                    {loggedIn && <span> Welcome, {nameData.userName.toUpperCase()}</span>}
-                    <h1 onDoubleClick={()=>{setter(false)}}>
+                    {loggedIn && <span onDoubleClick={()=>{setter(false)}}> Welcome, {nameData.userName.toUpperCase()}</span>}
+                    <h1>
                         {!loggedIn && 'TODO App'} 
                     </h1>
                 </li>
