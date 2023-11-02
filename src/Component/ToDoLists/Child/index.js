@@ -43,7 +43,7 @@ const ToDoList = ({EDIT, time, toDo, date, ondblclick, id, remainder, setReminde
       }}
       >
         <h3 onClick={()=>{type === 'list' && setReminder(id)}} >{toDo} </h3>
-        <p>{GetActualTime()}  |  {GetActualTimeTime()}</p>
+        <p>{GetActualTime()}  {type === 'list' && `| ${GetActualTimeTime()}`}</p>
         {state && <Buttons />}
       </div>
     </Wrapper> 
