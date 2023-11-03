@@ -54,7 +54,7 @@ function Login({logins, setLogins, setAproval}) {
     <Wrapper style={extraParentStle}>
     <h1 style={{margin: '-90px 0 50px 0'}}>{hasSignedUp? "Log In To Your Account": "Sign Up "}</h1>
         <div>
-            <label>Username <sup style={{color:red}}>*</sup></label>
+            <label>Username <sup style={{color:"red"}}>*</sup></label>
             {hasSignedUp?
             <input 
                 type='text'
