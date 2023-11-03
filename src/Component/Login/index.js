@@ -45,7 +45,7 @@ function Login({logins, setLogins, setAproval}) {
     const extraParentStle = {
         marginTop: "100px",
         padding: "100px 0 100px 0",
-        width: "300px",
+        width: "400px",
         backgroundColor: '#add8e6',
         border: '1px solid black',
         position: 'relative',
