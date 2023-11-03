@@ -46,14 +46,14 @@ function Login({logins, setLogins, setAproval}) {
         marginTop: "100px",
         padding: "100px 0 100px 0",
         width: "100vw",
-        backgroundColor: '#FFFFFF',
-/*         border: '1px solid black',
+        backgroundColor: '#add8e6',
+        border: '1px solid black',
         position: 'relative',
         top: '50%',
         left: "50%",
         transform: "translate(-50%,-50%)",
-        marginTop: '200px'
- */    }
+        marginTop: '400px'
+    }
   return (
     <>
     <Header />
