@@ -52,7 +52,7 @@ const InputForm = ({setter, Setter, state, setState}) => {
     return(
         <Wrapper>
             <div>
-            <label htmlFor="toDo"> Inpute your ToDo </label>
+            <label htmlFor="toDo"> Inpute your ToDo <sup style={{color:red}}>*</sup></label>
                 <input 
                 type="text" 
                 onChange={onChange} 
@@ -64,7 +64,7 @@ const InputForm = ({setter, Setter, state, setState}) => {
                 />
             </div>
             <div>
-                <label htmlFor="date" style={{display: "block"}}> Select Date </label>
+                <label htmlFor="date" style={{display: "block"}}> Select Date <sup style={{color:red}}>*</sup></label>
                 <input 
                 type="date" 
                 onChange={(e)=>{onChange(e)}} 
@@ -76,7 +76,7 @@ const InputForm = ({setter, Setter, state, setState}) => {
                 />
             </div>
             <div>
-                <label htmlFor="time" style={{display: "block"}}> Select time </label>
+                <label htmlFor="time" style={{display: "block"}}> Select time <sup style={{color:red}}>*</sup></label>
                 <input 
                 type="time" 
                 onChange={(e)=>{onChange(e)}} 
@@ -96,7 +96,7 @@ const InputForm = ({setter, Setter, state, setState}) => {
                 id="remainder"
                 className="checkbox"
                 />
-                <label htmlFor="remainder" className="label"> Do you want a remainder? </label>
+                <label htmlFor="remainder" className="label"> Do you want a remainder? <sup style={{color:red}}>*</sup></label>
             </div>
 
             <button onClick={submitInput}> ADD </button>
