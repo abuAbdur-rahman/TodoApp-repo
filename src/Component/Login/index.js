@@ -45,16 +45,16 @@ function Login({logins, setLogins, setAproval}) {
     const extraParentStle = {
         marginTop: "100px",
         padding: "100px 0 100px 0",
-        width: "90vw",
+        width: "100vw",
         backgroundColor: '#add8e6',
-        border: '1px solid black',
+/*         border: '1px solid black',
         position: 'relative',
         top: '50%',
         left: "50%",
         transform: "translate(-50%,-50%)",
         marginTop: '300px',
         padding: "30px 30px 90px 30px",
-        borderRadius: "10px"
+        borderRadius: "10px" */
     }
   return (
     <>
