@@ -76,7 +76,3 @@ footer:hover{
   transition: all .3s ease-in-out;
   text-shadow: 2px 2.5px 2px coral;
 }
-
-#root > div{
-  min-height: 80vh;
-}
