@@ -74,7 +74,7 @@ function Login({logins, setLogins, setAproval}) {
             }
         </div>
         <div>
-            <label>Password <sup style={{color:red}}>*</sup></label>
+            <label>Password <sup style={{color:"red"}}>*</sup></label>
             <input 
                 type={show? 'text' :'password'} 
                 name='password'
