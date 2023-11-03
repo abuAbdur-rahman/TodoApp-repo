@@ -64,7 +64,7 @@ function Login({logins, setLogins, setAproval}) {
                 disabled
             />:
             <input
-                placeholder='Enter A UserName....'
+                placeholder="Enter Your first username" 
                 type='text'
                 name='userName'
                 id='userName'
