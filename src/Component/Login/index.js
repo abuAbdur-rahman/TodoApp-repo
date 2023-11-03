@@ -46,7 +46,8 @@ function Login({logins, setLogins, setAproval}) {
         marginTop: "100px",
         padding: "100px 0 100px 0",
         width: "100vw",
-        backgroundColor: '#FFFFFF'
+        backgroundColor: '#FFFFFF',
+        border: '1px solid black'
     }
   return (
     <>
