@@ -54,7 +54,7 @@ function Login({logins, setLogins, setAproval}) {
     <Wrapper style={extraParentStle}>
     <h1 style={{margin: '-90px 0 50px 0'}}>{hasSignedUp? "Log In To Your Account": "Sign Up "}</h1>
         <div>
-            <label>Username</label>
+            <label>Username <sup style={{color:red}}>*</sup></label>
             {hasSignedUp?
             <input 
                 type='text'
@@ -63,7 +63,8 @@ function Login({logins, setLogins, setAproval}) {
                 value={logins.userName}
                 disabled
             />:
-            <input 
+            <input
+                placeholder='Enter A UserName....'
                 type='text'
                 name='userName'
                 id='userName'
@@ -73,7 +74,7 @@ function Login({logins, setLogins, setAproval}) {
             }
         </div>
         <div>
-            <label>Password</label>
+            <label>Password <sup style={{color:red}}>*</sup></label>
             <input 
                 type={show? 'text' :'password'} 
                 name='password'
