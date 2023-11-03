@@ -52,7 +52,9 @@ function Login({logins, setLogins, setAproval}) {
         top: '50%',
         left: "50%",
         transform: "translate(-50%,-50%)",
-        marginTop: '300px'
+        marginTop: '300px',
+        padding: "30px",
+        borderRadius: "10px"
     }
   return (
     <>
